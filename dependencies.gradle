@@ -11,6 +11,9 @@ ext {
     recyclerViewVersion = '1.0.0'
     materialVersion = '1.0.0'
 
+    retrofitVersion = '2.5.0'
+    okHttpVersion = '3.12.1'
+
     //Tests
     junitVersion = '4.12'
 
@@ -34,5 +37,8 @@ ext {
             legacySupport : "androidx.legacy:legacy-support-v4:${legacySupportVersion}",
             recyclerView  : "androidx.recyclerview:recyclerview:${recyclerViewVersion}",
             material      : "com.google.android.material:material:${materialVersion}",
+            retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            converterGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            okHttp: "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
     ]
 }

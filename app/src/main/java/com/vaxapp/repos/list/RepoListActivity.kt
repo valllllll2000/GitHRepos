@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.vaxapp.data.ReposDataSource
 import com.vaxapp.repos.R
 import com.vaxapp.repos.detail.RepoDetailFragment
 
@@ -40,6 +41,7 @@ class RepoListActivity : AppCompatActivity() {
         }
 
         setupRecyclerView(item_list)
+        ReposDataSource().getRepos()
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
