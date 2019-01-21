@@ -23,9 +23,10 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':domain')
+
     implementation appDependencies.kotlin
     implementation appDependencies.appCompat
-    implementation appDependencies.retrofit
     implementation appDependencies.retrofit
     implementation appDependencies.converterGson
     implementation appDependencies.okHttp

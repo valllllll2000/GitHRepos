@@ -8,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.vaxapp.data.ReposDataSource
+import com.vaxapp.data.datasource.ReposDataSource
+import com.vaxapp.data.repository.RepoDataRepository
+import com.vaxapp.domain.entity.DomainRepo
+import com.vaxapp.domain.interactor.GetReposUseCase
 import com.vaxapp.repos.R
 import com.vaxapp.repos.detail.RepoDetailFragment
 
@@ -41,7 +44,16 @@ class RepoListActivity : AppCompatActivity() {
         }
 
         setupRecyclerView(item_list)
-        ReposDataSource().getRepos()
+        GetReposUseCase(RepoDataRepository(ReposDataSource())).execute(onError = { doOnError(it) },
+                                                                       onSuccess = { doOnSuccess(it) })
+    }
+
+    private fun doOnSuccess(repos: List<DomainRepo>) {
+        //TODO
+    }
+
+    private fun doOnError(throwable: Throwable?) {
+        //TODO
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {

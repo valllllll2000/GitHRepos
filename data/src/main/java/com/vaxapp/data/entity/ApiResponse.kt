@@ -1,6 +1,6 @@
-package com.vaxapp.data
+package com.vaxapp.data.entity
 
-data class Response(
+data class ApiResponse(
     val items: List<ApiRepo>
 )
 

@@ -1,5 +1,7 @@
-package com.vaxapp.data
+package com.vaxapp.data.net
 
+import com.vaxapp.data.BuildConfig
+import com.vaxapp.data.entity.ApiResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -34,7 +36,7 @@ class RestApi {
         service = retrofit.create(GithubApiService::class.java)
     }
 
-    fun getRepos(): Call<Response> {
+    fun getRepos(): Call<ApiResponse> {
         return service.getRepos()
     }
 }

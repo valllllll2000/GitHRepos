@@ -1,17 +1,19 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+
     defaultConfig {
-        applicationId "com.vaxapp.repos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,18 +23,8 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':data')
-    implementation project(path: ':domain')
-
     implementation appDependencies.kotlin
     implementation appDependencies.appCompat
-    implementation appDependencies.coreKtx
-    implementation appDependencies.legacySupport
-    implementation appDependencies.recyclerView
-    implementation appDependencies.material
 
     testImplementation testDependencies.jUnit
-
-    androidTestImplementation androidTestDependencies.supportTestRunner
-    androidTestImplementation androidTestDependencies.espressoCore
 }
