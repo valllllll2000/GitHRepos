@@ -10,6 +10,8 @@ ext {
     legacySupportVersion = '1.0.0'
     recyclerViewVersion = '1.0.0'
     materialVersion = '1.0.0'
+    lifecycleExtensionsVersion = '2.0.0'
+    databindingVersion = ext.gradleVersion
 
     retrofitVersion = '2.5.0'
     okHttpVersion = '3.12.1'
@@ -31,7 +33,7 @@ ext {
     ]
 
     appDependencies = [
-            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${ext.kotlin_version}",
+            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${ext.kotlinVersion}",
             appCompat     : "androidx.appcompat:appcompat:${appCompatVersion}",
             coreKtx       : "androidx.core:core-ktx:${coreKtxVersion}",
             legacySupport : "androidx.legacy:legacy-support-v4:${legacySupportVersion}",
@@ -40,5 +42,7 @@ ext {
             retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             converterGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             okHttp: "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:${lifecycleExtensionsVersion}",
+            databinding: "androidx.databinding:databinding-compiler:${databindingVersion}",
     ]
 }

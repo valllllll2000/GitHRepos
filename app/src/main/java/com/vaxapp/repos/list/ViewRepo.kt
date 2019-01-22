@@ -1,15 +1,15 @@
-package com.vaxapp.domain.entity
+package com.vaxapp.repos.list
 
-data class DomainRepo(
+data class ViewRepo(
     val fullName: String,
-    val owner: DomainOwner,
+    val owner: ViewOwner,
     val description: String,
     val updatedAt: String,
     val language: String?,
     val openIssuesCount: Int
 )
 
-data class DomainOwner(
+data class ViewOwner(
     val login: String,
     val avatarUrl: String,
     val type: String
