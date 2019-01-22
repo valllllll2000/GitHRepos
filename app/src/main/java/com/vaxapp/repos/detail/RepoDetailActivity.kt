@@ -2,11 +2,12 @@ package com.vaxapp.repos.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
-import android.view.MenuItem
 import com.vaxapp.repos.R
 import com.vaxapp.repos.list.RepoListActivity
+import com.vaxapp.repos.list.ViewRepo
 import kotlinx.android.synthetic.main.activity_repo_detail.*
 
 class RepoDetailActivity : AppCompatActivity() {
@@ -21,8 +22,8 @@ class RepoDetailActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             val fragment = RepoDetailFragment().apply {
                 arguments = Bundle().apply {
-                    val extra = intent.getStringExtra(RepoDetailFragment.ARG_ITEM_ID)
-                    putString(RepoDetailFragment.ARG_ITEM_ID, extra)
+                    val extra = intent.getParcelableExtra<ViewRepo>(RepoDetailFragment.ARG_ITEM_ID)
+                    putParcelable(RepoDetailFragment.ARG_ITEM_ID, extra)
                 }
             }
 

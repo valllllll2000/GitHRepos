@@ -1,32 +1,31 @@
 package com.vaxapp.repos.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.vaxapp.repos.R
-import com.vaxapp.repos.dummy.DummyContent
+import com.vaxapp.repos.list.ViewRepo
 import kotlinx.android.synthetic.main.activity_repo_detail.*
-import kotlinx.android.synthetic.main.repo_detail.view.*
+import kotlinx.android.synthetic.main.repo_detail_view.view.*
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.TimeZone
 
 class RepoDetailFragment : Fragment() {
 
-    /**
-     * The dummy content this fragment is presenting.
-     */
-    private var item: DummyContent.DummyItem? = null
+    private var viewRepo: ViewRepo? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             if (it.containsKey(ARG_ITEM_ID)) {
-                // Load the dummy content specified by the fragment
-                // arguments. In a real-world scenario, use a Loader
-                // to load content from a content provider.
-                item = DummyContent.ITEM_MAP[it.getString(ARG_ITEM_ID)]
-                activity?.toolbar_layout?.title = item?.content
+                viewRepo = it.getParcelable(ARG_ITEM_ID)
+                activity?.toolbar_layout?.title = viewRepo?.fullName
             }
         }
     }
@@ -36,21 +35,26 @@ class RepoDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.repo_detail, container, false)
+        val rootView =
+            inflater.inflate(com.vaxapp.repos.R.layout.repo_detail_view, container, false)
 
-        // Show the dummy content as text in a TextView.
-        item?.let {
-            rootView.item_detail.text = it.details
+        viewRepo?.let {
+            rootView.description.text = it.description
+            rootView.user_name.text = it.owner.login
+            rootView.issues.text = getString(R.string.issues, it.openIssuesCount)
+            rootView.language.text = it.language
+            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+            sdf.timeZone = TimeZone.getTimeZone("GMT")
+            val time = sdf.parse(it.updatedAt).time
+            val now = System.currentTimeMillis()
+            rootView.date.text = getString(R.string.updated,
+                DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS))
+            Glide.with(rootView).load(it.owner.avatarUrl).into(rootView.user_image)
+            return rootView
         }
-
-        return rootView
     }
 
     companion object {
-        /**
-         * The fragment argument representing the item ID that this fragment
-         * represents.
-         */
         const val ARG_ITEM_ID = "item_id"
     }
 }

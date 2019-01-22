@@ -43,7 +43,7 @@ class RepoListViewModel : ViewModel() {
             it?.let {
                 val intent = Intent(activity, RepoDetailActivity::class.java)
                     .apply {
-                        putExtra(RepoDetailFragment.ARG_ITEM_ID, it.fullName)
+                        putExtra(RepoDetailFragment.ARG_ITEM_ID, it)
                     }
                 activity.startActivity(intent)
             }

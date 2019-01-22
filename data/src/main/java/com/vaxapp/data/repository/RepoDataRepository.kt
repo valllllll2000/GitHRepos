@@ -4,8 +4,7 @@ import com.vaxapp.data.datasource.ReposDataSource
 import com.vaxapp.domain.entity.DomainRepo
 import com.vaxapp.domain.repository.RepoRepository
 
-class RepoDataRepository(private val reposDataSource: ReposDataSource) :
-    RepoRepository {
+class RepoDataRepository(private val reposDataSource: ReposDataSource) : RepoRepository {
 
     override fun getRepos(onSuccess: (List<DomainRepo>) -> Unit, onError: () -> Unit) =
         reposDataSource.getRepos(onSuccess, onError)
