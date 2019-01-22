@@ -54,6 +54,11 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.constraintLayoutSolver
     implementation appDependencies.glide
+    implementation appDependencies.retrofit
+    implementation appDependencies.converterGson
+    implementation appDependencies.okHttp
+    implementation appDependencies.koinViewModel
+    implementation appDependencies.koin
 
     kapt appDependencies.databinding
     kapt appDependencies.glideCompiler

@@ -7,8 +7,6 @@ import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.vaxapp.data.datasource.ReposDataSource
-import com.vaxapp.data.repository.RepoDataRepository
 import com.vaxapp.domain.entity.DomainRepo
 import com.vaxapp.domain.interactor.GetReposUseCase
 import com.vaxapp.repos.detail.RepoDetailActivity
@@ -17,7 +15,7 @@ import com.vaxapp.repos.list.model.ViewRepo
 import com.vaxapp.repos.list.model.toView
 import com.vaxapp.repos.list.view.SimpleItemRecyclerViewAdapter
 
-class RepoListViewModel : ViewModel() {
+class RepoListViewModel(private val getReposUseCase: GetReposUseCase) : ViewModel() {
 
     val adapter: SimpleItemRecyclerViewAdapter =
         SimpleItemRecyclerViewAdapter(ArrayList(), this)
@@ -49,7 +47,8 @@ class RepoListViewModel : ViewModel() {
                 activity.startActivity(intent)
             }
         })
-        GetReposUseCase(RepoDataRepository(ReposDataSource()))
+        // val getReposUseCase = GetReposUseCase(RepoDataRepository(ReposDataSource()))
+        getReposUseCase
             .execute(onError = { doOnError() }, onSuccess = { doOnSuccess(it) })
     }
 

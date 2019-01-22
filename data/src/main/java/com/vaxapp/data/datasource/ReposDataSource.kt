@@ -8,9 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ReposDataSource {
-
-    private val restApi = RestApi()
+class ReposDataSource(private val restApi: RestApi) {
 
     fun getRepos(onSuccess: (List<DomainRepo>) -> Unit, onError: () -> Unit) {
         restApi.getRepos().enqueue(object : Callback<ApiResponse> {
