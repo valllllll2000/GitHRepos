@@ -1,4 +1,4 @@
-package com.vaxapp.repos.list
+package com.vaxapp.repos.list.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

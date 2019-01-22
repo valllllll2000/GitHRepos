@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.vaxapp.repos.R
-import com.vaxapp.repos.list.ViewRepo
+import com.vaxapp.repos.list.model.ViewRepo
 import kotlinx.android.synthetic.main.activity_repo_detail.*
 import kotlinx.android.synthetic.main.repo_detail_view.view.*
 import java.text.SimpleDateFormat

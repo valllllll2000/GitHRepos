@@ -1,4 +1,4 @@
-package com.vaxapp.repos.list
+package com.vaxapp.repos.list.model
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -13,7 +13,11 @@ data class ViewRepo(
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
-        parcel.readParcelable(ViewOwner::class.java.classLoader) ?: ViewOwner("", "", ""),
+        parcel.readParcelable(ViewOwner::class.java.classLoader) ?: ViewOwner(
+            "",
+            "",
+            ""
+        ),
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString(),

@@ -1,4 +1,4 @@
-package com.vaxapp.repos.list
+package com.vaxapp.repos.list.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.vaxapp.repos.R
+import com.vaxapp.repos.list.model.ViewRepo
 import com.vaxapp.repos.list.viewmodel.RepoListViewModel
 
 class SimpleItemRecyclerViewAdapter(

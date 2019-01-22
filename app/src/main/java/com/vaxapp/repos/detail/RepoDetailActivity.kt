@@ -6,8 +6,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
 import com.vaxapp.repos.R
-import com.vaxapp.repos.list.RepoListActivity
-import com.vaxapp.repos.list.ViewRepo
+import com.vaxapp.repos.list.view.RepoListActivity
+import com.vaxapp.repos.list.model.ViewRepo
 import kotlinx.android.synthetic.main.activity_repo_detail.*
 
 class RepoDetailActivity : AppCompatActivity() {

@@ -13,13 +13,14 @@ import com.vaxapp.domain.entity.DomainRepo
 import com.vaxapp.domain.interactor.GetReposUseCase
 import com.vaxapp.repos.detail.RepoDetailActivity
 import com.vaxapp.repos.detail.RepoDetailFragment
-import com.vaxapp.repos.list.SimpleItemRecyclerViewAdapter
-import com.vaxapp.repos.list.ViewRepo
-import com.vaxapp.repos.list.toView
+import com.vaxapp.repos.list.model.ViewRepo
+import com.vaxapp.repos.list.model.toView
+import com.vaxapp.repos.list.view.SimpleItemRecyclerViewAdapter
 
 class RepoListViewModel : ViewModel() {
 
-    val adapter: SimpleItemRecyclerViewAdapter = SimpleItemRecyclerViewAdapter(ArrayList(), this)
+    val adapter: SimpleItemRecyclerViewAdapter =
+        SimpleItemRecyclerViewAdapter(ArrayList(), this)
     val loading: ObservableInt = ObservableInt(View.GONE)
     val showEmpty: ObservableInt = ObservableInt(View.GONE)
 
