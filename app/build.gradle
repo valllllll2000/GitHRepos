@@ -65,6 +65,7 @@ dependencies {
     kapt appDependencies.annotations
 
     testImplementation testDependencies.jUnit
+    testImplementation 'org.mockito:mockito-core:2.21.0'
 
     androidTestImplementation androidTestDependencies.supportTestRunner
     androidTestImplementation androidTestDependencies.espressoCore

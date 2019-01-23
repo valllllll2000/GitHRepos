@@ -2,6 +2,7 @@ package com.vaxapp.repos.list.viewmodel
 
 import android.content.Intent
 import android.view.View
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
@@ -31,10 +32,20 @@ class RepoListViewModel(private val getReposUseCase: GetReposUseCase) : ViewMode
         fetchRepos()
     }
 
-    private fun fetchRepos() {
+    @VisibleForTesting
+    fun fetchRepos() {
         loading.set(View.VISIBLE)
         getReposUseCase
             .execute(onError = { doOnError() }, onSuccess = { doOnSuccess(it) })
+    }
+
+    fun getItem(position: Int): ViewRepo? {
+        return liveRepos.value?.get(position)
+    }
+
+    fun onItemClick(index: Int) {
+        val db = getItem(index)
+        selected.value = db
     }
 
     private fun observeSelectedItem(activity: AppCompatActivity) {
@@ -61,15 +72,6 @@ class RepoListViewModel(private val getReposUseCase: GetReposUseCase) : ViewMode
                 }
             }
         })
-    }
-
-    fun getItem(position: Int): ViewRepo? {
-        return liveRepos.value?.get(position)
-    }
-
-    fun onItemClick(index: Int) {
-        val db = getItem(index)
-        selected.value = db
     }
 
     private fun doOnSuccess(repos: List<DomainRepo>) {
