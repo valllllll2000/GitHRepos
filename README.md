@@ -15,3 +15,8 @@ We also use AndroidX, RecyclerView (for the list), ConstraintLayout (for the det
 
 ### Download
 A debug build can be downloaded directly to a device using [https://bit.ly/2FUUbkc](https://bit.ly/2FUUbkc)
+
+### Pending Tasks
+Add more tests
+Extract some constants
+Add a ViewModel to repo detail screen
