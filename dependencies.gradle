@@ -23,6 +23,7 @@ ext {
 
     //Tests
     junitVersion = '4.12'
+    mockitoVersion = '2.21.0'
 
     //Android Tests
     supportTestRunnerVersion = '1.1.1'
@@ -30,6 +31,7 @@ ext {
 
     testDependencies = [
             jUnit: "junit:junit:${junitVersion}",
+            mockito: "org.mockito:mockito-core:${mockitoVersion}",
     ]
 
     androidTestDependencies = [
