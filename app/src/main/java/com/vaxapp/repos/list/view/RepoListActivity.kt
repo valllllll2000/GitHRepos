@@ -17,7 +17,7 @@ class RepoListActivity : AppCompatActivity() {
         setContentView(com.vaxapp.repos.R.layout.activity_repo_list)
 
         setUpBindings()
-        viewModel.fetchRepos(this)
+        viewModel.onViewReady(this)
     }
 
     private fun setUpBindings() {

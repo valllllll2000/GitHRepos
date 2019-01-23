@@ -25,8 +25,31 @@ class RepoListViewModel(private val getReposUseCase: GetReposUseCase) : ViewMode
     private val selected: MutableLiveData<ViewRepo> = MutableLiveData()
     private val liveRepos: MutableLiveData<List<ViewRepo>> = MutableLiveData()
 
-    fun fetchRepos(activity: AppCompatActivity) {
+    fun onViewReady(activity: AppCompatActivity) {
+        observeRepoList(activity)
+        observeSelectedItem(activity)
+        fetchRepos()
+    }
+
+    private fun fetchRepos() {
         loading.set(View.VISIBLE)
+        getReposUseCase
+            .execute(onError = { doOnError() }, onSuccess = { doOnSuccess(it) })
+    }
+
+    private fun observeSelectedItem(activity: AppCompatActivity) {
+        selected.observe(activity, Observer<ViewRepo> { it ->
+            it?.let {
+                val intent = Intent(activity, RepoDetailActivity::class.java)
+                    .apply {
+                        putExtra(RepoDetailFragment.ARG_ITEM_ID, it)
+                    }
+                activity.startActivity(intent)
+            }
+        })
+    }
+
+    private fun observeRepoList(activity: AppCompatActivity) {
         liveRepos.observe(activity, Observer<List<ViewRepo>> { it ->
             loading.set(View.GONE)
             it?.let {
@@ -38,17 +61,6 @@ class RepoListViewModel(private val getReposUseCase: GetReposUseCase) : ViewMode
                 }
             }
         })
-        selected.observe(activity, Observer<ViewRepo> { it ->
-            it?.let {
-                val intent = Intent(activity, RepoDetailActivity::class.java)
-                    .apply {
-                        putExtra(RepoDetailFragment.ARG_ITEM_ID, it)
-                    }
-                activity.startActivity(intent)
-            }
-        })
-        getReposUseCase
-            .execute(onError = { doOnError() }, onSuccess = { doOnSuccess(it) })
     }
 
     fun getItem(position: Int): ViewRepo? {
