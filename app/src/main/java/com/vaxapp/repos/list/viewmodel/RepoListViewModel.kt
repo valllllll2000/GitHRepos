@@ -47,7 +47,6 @@ class RepoListViewModel(private val getReposUseCase: GetReposUseCase) : ViewMode
                 activity.startActivity(intent)
             }
         })
-        // val getReposUseCase = GetReposUseCase(RepoDataRepository(ReposDataSource()))
         getReposUseCase
             .execute(onError = { doOnError() }, onSuccess = { doOnSuccess(it) })
     }

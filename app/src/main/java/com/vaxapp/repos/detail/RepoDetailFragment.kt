@@ -43,15 +43,20 @@ class RepoDetailFragment : Fragment() {
             rootView.user_name.text = it.owner.login
             rootView.issues.text = getString(R.string.issues, it.openIssuesCount)
             rootView.language.text = it.language
-            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-            sdf.timeZone = TimeZone.getTimeZone("GMT")
-            val time = sdf.parse(it.updatedAt).time
+            val time = timeFromDateString(it)
             val now = System.currentTimeMillis()
             rootView.date.text = getString(R.string.updated,
                 DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS))
             Glide.with(rootView).load(it.owner.avatarUrl).into(rootView.user_image)
             return rootView
         }
+    }
+
+    private fun timeFromDateString(it: ViewRepo): Long {
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+        sdf.timeZone = TimeZone.getTimeZone("GMT")
+        val time = sdf.parse(it.updatedAt).time
+        return time
     }
 
     companion object {
