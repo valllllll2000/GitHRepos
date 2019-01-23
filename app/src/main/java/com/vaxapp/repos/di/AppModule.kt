@@ -1,4 +1,4 @@
-package com.vaxapp.repos
+package com.vaxapp.repos.di
 
 import com.vaxapp.data.BuildConfig
 import com.vaxapp.data.datasource.ReposDataSource
