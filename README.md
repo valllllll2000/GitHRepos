@@ -11,12 +11,12 @@ Displays a list of github repositories in a list screen and some detail about th
 * [Retrofit 2](https://github.com/square/retrofit): for network call
 * [Glide](https://github.com/bumptech/glide): for loading images (user avatar)
 
-We also use AndroidX, RecyclerView (for the list), ConstraintLayout (for the detail), Databinding (for the list), ModelView and Lifecycle extensions (for the list only for now), clean architecture. I use [Travis](https://travis-ci.org/valllllll2000/GitHRepos) as CI and there is a [ktlint](https://github.com/shyiko/ktlint) file to verify code style. 
+We also use AndroidX, RecyclerView (for the list), ConstraintLayout (for the detail), Databinding (for the list), ViewModel and LiveData (for the list only for now), clean architecture. I use [Travis](https://travis-ci.org/valllllll2000/GitHRepos) as CI and there is a [ktlint](https://github.com/shyiko/ktlint) file to verify code style. 
 
 ### Download
 A debug build can be downloaded directly to a device using [https://bit.ly/2FUUbkc](https://bit.ly/2FUUbkc)
 
 ### Pending Tasks
-Add more tests
-Extract some constants
-Add a ViewModel to repo detail screen
+* Add more tests
+* Extract some constants
+* Add a ViewModel to repo detail screen
