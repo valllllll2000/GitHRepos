@@ -1,4 +1,4 @@
-# GitHRepos
+# GitHHRepos
 
 Displays a list of github repositories in a list screen and some detail about them in a detail screen. We use this github API https://developer.github.com/v3/search/. Written in Kotlin.
 
